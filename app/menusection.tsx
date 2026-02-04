@@ -20,7 +20,7 @@ const menuItems = {
 
 const MenuSection = () => {
   return (
-    <section id="menu" className="py-20 bg-secondary/30">
+    <section id="menu" className="py-20">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <p className="text-elegant text-muted-foreground mb-2">Dîner de réception</p>

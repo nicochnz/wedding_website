@@ -69,7 +69,7 @@ const RSVPForm = () => {
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <p className="text-elegant text-muted-foreground mb-2">Confirmez votre présence</p>
-          <h2 className="heading-section gold-underline pb-4">RSVP</h2>
+          <h2 className="heading-section gold-underline pb-4">Résérvation</h2>
         </div>
 
         <div className="max-w-2xl mx-auto">
