@@ -16,7 +16,7 @@ const Hero = () => {
           quality={90}
         />
         {/* Couche sombre globale */}
-        <div className="absolute inset-0 bg-black/20" />
+        <div className="absolute inset-0 bg-black/30" />
         {/* Dégradé pour accentuer la lisibilité en haut (navbar) et en bas */}
         <div className="absolute inset-0 bg-linear-to-b from-black/60 via-transparent to-black/60" />
       </div>
@@ -34,7 +34,7 @@ const Hero = () => {
           <span className="w-16 h-px bg-gold-light shadow-sm" />
         </div>
         <p className="text-lg md:text-xl font-light tracking-wide opacity-0 animate-fade-in drop-shadow-md" style={{ animationDelay: '0.8s' }}>
-          19 — 21 Août 2026
+          20 — 23 Août 2026
         </p>
       </div>
 

@@ -58,7 +58,7 @@ Merci pour votre générosité !
             onClick={handleDownloadRIB}
             variant="outline"
             size="lg"
-            className="border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300 px-8"
+            className="border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300 px-8 cursor-pointer"
           >
             <Download className="w-4 h-4 mr-2" />
             Télécharger le RIB
