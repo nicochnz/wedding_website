@@ -96,7 +96,7 @@ const ProgrammeSection = () => {
   };
 
   return (
-    <section id="programme" className="py-20 bg-secondary/30 overflow-hidden min-h-[900px]"> {/* Increased min-height */}
+    <section id="programme" className="py-20 overflow-hidden min-h-[900px]"> {/* Increased min-height */}
       <div className="container mx-auto px-4 h-full flex flex-col">
         <div className="text-center mb-10">
           <p className="text-elegant text-muted-foreground mb-2">Le déroulement</p>
