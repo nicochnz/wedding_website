@@ -43,12 +43,11 @@ Merci pour votre générosité !
           </div>
           
           <h2 className="font-serif text-2xl md:text-3xl mb-4">
-            Notre liste de mariage
+            Résérvation des chambres ou des tentes
           </h2>
           
           <p className="text-muted-foreground mb-8 max-w-lg mx-auto">
-            Votre présence est notre plus beau cadeau. Si vous souhaitez nous gâter davantage, 
-            une participation à notre voyage de noces serait la bienvenue.
+           Comme indiqué sur le faire part, vous pouvez procéder à la réservation de vos chambres ou tentes dès maintenant.
           </p>
 
           <div className="divider-ornament">

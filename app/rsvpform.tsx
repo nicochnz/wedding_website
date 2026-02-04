@@ -9,9 +9,10 @@ import { Send, Heart } from 'lucide-react';
 import { sendRSVPEmail } from './actions';
 
 const days = [
-  { id: 'jour1', label: 'Vendredi 12 Juillet', subtitle: 'Accueil & Cocktail' },
-  { id: 'jour2', label: 'Samedi 13 Juillet', subtitle: 'Cérémonie & Dîner' },
-  { id: 'jour3', label: 'Dimanche 14 Juillet', subtitle: 'Brunch' },
+  { id: 'jour1', label: 'Jeudi 18 Août'},
+  { id: 'jour2', label: 'Vendredi 19 Août'},
+  { id: 'jour3', label: 'Samedi 20 Août'},
+  { id: 'jour4', label: 'Dimanche 21 Août'},  
 ];
 
 const mealOptions = [
@@ -65,8 +66,7 @@ const RSVPForm = () => {
     <section id="rsvp" className="py-20">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <p className="text-elegant text-muted-foreground mb-2">Confirmez votre présence</p>
-          <h2 className="heading-section gold-underline pb-4">RSVP</h2>
+          <h2 className="heading-section gold-underline pb-4">Confirmation de votre présence</h2>
         </div>
 
         <div className="max-w-2xl mx-auto">
@@ -136,7 +136,6 @@ const RSVPForm = () => {
                     <div>
                       <span className="font-medium">{day.label}</span>
                       <span className="block text-sm text-muted-foreground">
-                        {day.subtitle}
                       </span>
                     </div>
                   </label>

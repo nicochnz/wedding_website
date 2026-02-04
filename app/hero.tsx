@@ -6,7 +6,6 @@ const Hero = () => {
       id="hero"
       className="relative h-screen w-full flex items-center justify-center overflow-hidden"
     >
-      {/* Background Image */}
       <div className="absolute inset-0">
         <Image
           src="/cam_nico.jpg"
@@ -16,12 +15,14 @@ const Hero = () => {
           priority
           quality={90}
         />
-        <div className="absolute inset-0 bg-black/30" />
+        {/* Couche sombre globale */}
+        <div className="absolute inset-0 bg-black/20" />
+        {/* Dégradé pour accentuer la lisibilité en haut (navbar) et en bas */}
+        <div className="absolute inset-0 bg-linear-to-b from-black/60 via-transparent to-black/60" />
       </div>
 
-      {/* Content */}
       <div className="relative z-10 text-center text-white px-4">
-        <p className="text-elegant mb-4 opacity-0 animate-fade-in drop-shadow-md" style={{ animationDelay: '0.2s' }}>
+        <p className="text-elegant text-2xl mb-4 opacity-0 animate-fade-in drop-shadow-md" style={{ animationDelay: '0.2s' }}>
           Nous avons le plaisir de vous convier à notre
         </p>
         <h1 className="heading-display mb-6 opacity-0 animate-fade-in-up drop-shadow-lg" style={{ animationDelay: '0.4s' }}>
