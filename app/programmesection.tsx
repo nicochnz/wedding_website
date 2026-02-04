@@ -96,7 +96,7 @@ const ProgrammeSection = () => {
   };
 
   return (
-    <section id="programme" className="py-20 overflow-hidden min-h-[900px]"> {/* Increased min-height */}
+    <section id="programme" className="py-20 overflow-hidden min-h-[900px]">
       <div className="container mx-auto px-4 h-full flex flex-col">
         <div className="text-center mb-10">
           <p className="text-elegant text-muted-foreground mb-2">Le déroulement</p>
@@ -104,7 +104,7 @@ const ProgrammeSection = () => {
         </div>
 
         {/* Zone des cartes */}
-        <div className="relative flex-1 flex items-center justify-center min-h-[700px] w-full max-w-md mx-auto perspective-1000"> {/* Increased container min-height */}
+        <div className="relative flex-1 flex items-center justify-center min-h-[700px] w-full max-w-md mx-auto perspective-1000">
           <AnimatePresence initial={false} mode='popLayout'>
             {programmeData.map((day, index) => {
               const isFront = index === activeIndex;
@@ -117,9 +117,11 @@ const ProgrammeSection = () => {
               return (
                 <motion.div
                   key={day.day}
-                  className={`absolute w-full top-0 ${isFront ? 'cursor-grab active:cursor-grabbing touch-pan-y' : ''}`} // Added touch-pan-y
+                  // Retrait de "touch-pan-y" qui pouvait causer le lag et ajout de "touch-action-none" pour le drag
+                  className={`absolute w-full top-0 ${isFront ? 'cursor-grab active:cursor-grabbing' : ''}`}
                   style={{
                     zIndex: style.zIndex,
+                    touchAction: isFront ? 'pan-y' : 'auto' // Permet le scroll vertical mais bloque l'horizontal pour le swipe fluide
                   }}
                   animate={{
                     scale: style.scale,
@@ -128,6 +130,7 @@ const ProgrammeSection = () => {
                   }}
                   drag={isFront ? "x" : false}
                   dragConstraints={{ left: 0, right: 0 }}
+                  dragElastic={0.2} // Ajoute un peu de résistance pour éviter les swipes accidentels trop rapides
                   onDragEnd={handleDragEnd}
                   transition={{ type: "spring", stiffness: 300, damping: 30 }}
                   // Animation de sortie quand on swipe (uniquement pour la carte active qui part)
@@ -138,19 +141,19 @@ const ProgrammeSection = () => {
                   }}
                 >
                   {/* Design de la Carte */}
-                  <div className="bg-white rounded-3xl shadow-xl overflow-hidden border border-primary/10 select-none h-[650px] flex flex-col"> {/* Height is 650px */}
+                  <div className="bg-white rounded-3xl shadow-xl overflow-hidden border border-primary/10 select-none h-[650px] flex flex-col">
                     {/* En-tête de la carte */}
                     <div className="bg-primary/5 p-5 text-center border-b border-primary/10 shrink-0">
                       <div className="inline-flex items-center gap-2 text-primary mb-1 bg-white px-3 py-1 rounded-full shadow-sm text-xs font-bold uppercase tracking-widest">
                         <CalendarDays className="w-3 h-3" />
                         {day.fullDate}
                       </div>
-                      <h3 className="font-serif text-2xl text-foreground mt-2">{day.day.split(' ')[0]}</h3> {/* Slightly smaller title */}
+                      <h3 className="font-serif text-2xl text-foreground mt-2">{day.day.split(' ')[0]}</h3>
                       <p className="text-muted-foreground text-xs italic mt-1">{day.title}</p>
                     </div>
 
                     {/* Contenu de la carte - No overflow-y-auto */}
-                    <div className="p-4 flex-1 flex flex-col justify-center"> {/* Centered content vertically */}
+                    <div className="p-4 flex-1 flex flex-col justify-center">
                       <p className="text-center text-muted-foreground mb-6 text-sm px-4 shrink-0">
                         {day.description}
                       </p>
@@ -168,7 +171,7 @@ const ProgrammeSection = () => {
                               <span className="text-xs font-bold text-primary tracking-wide bg-primary/5 px-2 py-0.5 rounded">
                                 {event.time}
                               </span>
-                              <h4 className="font-medium text-gray-900 mt-1 text-sm">{event.title}</h4> {/* smaller text */}
+                              <h4 className="font-medium text-gray-900 mt-1 text-sm">{event.title}</h4>
                               {event.description && <p className="text-xs text-muted-foreground mt-0.5 leading-tight">{event.description}</p>}
                             </div>
                           </div>
