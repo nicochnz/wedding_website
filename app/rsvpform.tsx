@@ -195,7 +195,7 @@ const RSVPForm = () => {
             <Button
               type="submit"
               disabled={isSubmitting}
-              className="w-full bg-primary hover:bg-primary/90 text-primary-foreground py-6 text-base font-medium tracking-wide shadow-md"
+              className="w-full bg-primary hover:bg-primary/90 text-primary-foreground py-6 text-base font-medium tracking-wide shadow-md cursor-pointer"
             >
               {isSubmitting ? (
                 <span className="flex items-center gap-2">

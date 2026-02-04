@@ -13,9 +13,10 @@ export async function sendRSVPEmail(formData: FormData) {
 
   // Format the days string
   const dayLabels: Record<string, string> = {
-    jour1: "Vendredi",
-    jour2: "Samedi",
-    jour3: "Dimanche",
+    jour1: "Jeudi",
+    jour2: "Vendredi",
+    jour3: "Samedi",
+    jour4: "Dimanche",
   };
   
   const joursLisibles = jours.map(j => dayLabels[j] || j).join(", ");
