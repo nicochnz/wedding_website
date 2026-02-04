@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { motion, AnimatePresence, PanInfo } from 'framer-motion';
-import { MapPin, Sparkles, Church, UtensilsCrossed, Music, Coffee, Heart, ChevronRight, CalendarDays, Wine } from 'lucide-react';
+import { MapPin, Sparkles, UtensilsCrossed, Music, Coffee, Heart, ChevronRight, CalendarDays, Wine, HouseHeart } from 'lucide-react';
 
 // Données du programme
 const programmeData = [
@@ -24,11 +24,11 @@ const programmeData = [
     description: 'On se marie !',
     events: [
       { time: '9h30', title: 'Départ du domaine', icon: MapPin},
-      { time: '11h00', title: 'Marie de Mérignac', icon: Church, },
+      { time: '11h00', title: 'Mairie de Mérignac', icon: HouseHeart, },
       { time: '13h30', title: 'Vin d\'honneur', icon: Wine,},
       { time: '18h00', title: 'Apéro', icon: Wine, },
       { time: '20h00', title: 'Dîner', icon: UtensilsCrossed, description: 'Dîner du mariage' },
-      { time: '23h00', title: 'Soirée', icon: Music, description: 'Jusqu\'au bout de la nuit !' },
+      { time: '23h00', title: 'Soirée', icon: Music, },
     ],
   },
   {
@@ -42,7 +42,7 @@ const programmeData = [
       { time: '13h30', title: 'Repas', icon: UtensilsCrossed,},
       { time: '18h00', title: 'Apéro', icon: Wine, },
       { time: '20h00', title: 'Dîner', icon: UtensilsCrossed, description: 'Dîner du mariage' },
-      { time: '23h00', title: 'Soirée', icon: Music, description: 'Jusqu\'au bout de la nuit !' },
+      { time: '23h00', title: 'Soirée', icon: Music,},
     ],
   },
   {
@@ -96,7 +96,7 @@ const ProgrammeSection = () => {
   };
 
   return (
-    <section id="programme" className="py-20 bg-secondary/30 overflow-hidden min-h-[800px]">
+    <section id="programme" className="py-20 bg-secondary/30 overflow-hidden min-h-[900px]"> {/* Increased min-height */}
       <div className="container mx-auto px-4 h-full flex flex-col">
         <div className="text-center mb-10">
           <p className="text-elegant text-muted-foreground mb-2">Le déroulement</p>
@@ -104,7 +104,7 @@ const ProgrammeSection = () => {
         </div>
 
         {/* Zone des cartes */}
-        <div className="relative flex-1 flex items-center justify-center min-h-[500px] w-full max-w-md mx-auto perspective-1000">
+        <div className="relative flex-1 flex items-center justify-center min-h-[700px] w-full max-w-md mx-auto perspective-1000"> {/* Increased container min-height */}
           <AnimatePresence initial={false} mode='popLayout'>
             {programmeData.map((day, index) => {
               const isFront = index === activeIndex;
@@ -117,7 +117,7 @@ const ProgrammeSection = () => {
               return (
                 <motion.div
                   key={day.day}
-                  className={`absolute w-full top-0 ${isFront ? 'cursor-grab active:cursor-grabbing' : ''}`}
+                  className={`absolute w-full top-0 ${isFront ? 'cursor-grab active:cursor-grabbing touch-pan-y' : ''}`} // Added touch-pan-y
                   style={{
                     zIndex: style.zIndex,
                   }}
@@ -138,24 +138,24 @@ const ProgrammeSection = () => {
                   }}
                 >
                   {/* Design de la Carte */}
-                  <div className="bg-white rounded-3xl shadow-xl overflow-hidden border border-primary/10 select-none h-[500px] flex flex-col">
+                  <div className="bg-white rounded-3xl shadow-xl overflow-hidden border border-primary/10 select-none h-[650px] flex flex-col"> {/* Height is 650px */}
                     {/* En-tête de la carte */}
-                    <div className="bg-primary/5 p-6 text-center border-b border-primary/10">
-                      <div className="inline-flex items-center gap-2 text-primary mb-2 bg-white px-3 py-1 rounded-full shadow-sm text-xs font-bold uppercase tracking-widest">
+                    <div className="bg-primary/5 p-5 text-center border-b border-primary/10 shrink-0">
+                      <div className="inline-flex items-center gap-2 text-primary mb-1 bg-white px-3 py-1 rounded-full shadow-sm text-xs font-bold uppercase tracking-widest">
                         <CalendarDays className="w-3 h-3" />
                         {day.fullDate}
                       </div>
-                      <h3 className="font-serif text-3xl text-foreground mt-2">{day.day.split(' ')[0]}</h3>
-                      <p className="text-muted-foreground text-sm italic mt-1">{day.title}</p>
+                      <h3 className="font-serif text-2xl text-foreground mt-2">{day.day.split(' ')[0]}</h3> {/* Slightly smaller title */}
+                      <p className="text-muted-foreground text-xs italic mt-1">{day.title}</p>
                     </div>
 
-                    {/* Contenu de la carte */}
-                    <div className="p-6 flex-1 overflow-y-auto">
-                      <p className="text-center text-muted-foreground mb-8 text-sm px-4">
+                    {/* Contenu de la carte - No overflow-y-auto */}
+                    <div className="p-4 flex-1 flex flex-col justify-center"> {/* Centered content vertically */}
+                      <p className="text-center text-muted-foreground mb-6 text-sm px-4 shrink-0">
                         {day.description}
                       </p>
 
-                      <div className="space-y-6 relative pl-2">
+                      <div className="space-y-4 relative pl-2">
                          {/* Ligne verticale de temps */}
                          <div className="absolute left-[19px] top-2 bottom-2 w-px bg-border/60" />
 
@@ -168,8 +168,8 @@ const ProgrammeSection = () => {
                               <span className="text-xs font-bold text-primary tracking-wide bg-primary/5 px-2 py-0.5 rounded">
                                 {event.time}
                               </span>
-                              <h4 className="font-medium text-gray-900 mt-1">{event.title}</h4>
-                              {event.description && <p className="text-xs text-muted-foreground mt-0.5">{event.description}</p>}
+                              <h4 className="font-medium text-gray-900 mt-1 text-sm">{event.title}</h4> {/* smaller text */}
+                              {event.description && <p className="text-xs text-muted-foreground mt-0.5 leading-tight">{event.description}</p>}
                             </div>
                           </div>
                         ))}
@@ -178,8 +178,8 @@ const ProgrammeSection = () => {
 
                     {/* Footer de la carte (Indication) */}
                     {isFront && (
-                      <div className="p-4 bg-gray-50 text-center text-xs text-muted-foreground border-t border-gray-100 flex items-center justify-center gap-2 animate-pulse">
-                        Swipez ou cliquez pour la suite <ChevronRight className="w-3 h-3" />
+                      <div className="p-3 bg-gray-50 text-center text-xs text-muted-foreground border-t border-gray-100 flex items-center justify-center gap-2 animate-pulse shrink-0">
+                        Swipez pour la suite <ChevronRight className="w-3 h-3" />
                       </div>
                     )}
                   </div>

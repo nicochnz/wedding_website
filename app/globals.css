@@ -55,15 +55,15 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
+    --background: 40 30% 97%;
     --foreground: 20 14.3% 4.1%;
-    --card: 0 0% 100%;
+    --card: 40 30% 98%;
     --card-foreground: 20 14.3% 4.1%;
     --popover: 0 0% 100%;
     --popover-foreground: 20 14.3% 4.1%;
-    --primary: 45 50% 55%; /* Goldish */
+    --primary: 42 55% 55%;
     --primary-foreground: 26 83.3% 14.1%;
-    --secondary: 40 30% 96%; /* Off-white/Beige */
+    --secondary: 40 25% 94%;
     --secondary-foreground: 24 9.8% 10%;
     --muted: 60 4.8% 95.9%;
     --muted-foreground: 25 5.3% 44.7%;
@@ -71,10 +71,23 @@
     --accent-foreground: 24 9.8% 10%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 60 9.1% 97.8%;
-    --border: 20 5.9% 90%;
-    --input: 20 5.9% 90%;
-    --ring: 45 50% 55%;
+    --border: 42 30% 80%;
+    --input: 42 30% 80%;
+    --ring: 42 55% 55%;
     --radius: 0.5rem;
+  }
+  
+  body {
+    @apply bg-background text-foreground;
+    /* On change de stratégie : Utilisation d'un motif CSS pur (pois) très visible pour tester, puis on affinera */
+    background-color: #fcfbf7; /* Crème de base */
+    background-image: 
+      radial-gradient(#d4c5a5 1px, transparent 1px), 
+      radial-gradient(#d4c5a5 1px, transparent 1px);
+    background-size: 20px 20px;
+    background-position: 0 0, 10px 10px;
+    /* Opacité globale du motif pour qu'il reste élégant mais visible */
+    background-blend-mode: multiply;
   }
 }
 
@@ -100,7 +113,7 @@
   }
 
   .card-wedding {
-    @apply bg-card text-card-foreground rounded-xl border border-border/50 shadow-sm p-8;
+    @apply bg-white/80 backdrop-blur-md text-card-foreground rounded-xl border border-primary/20 shadow-md p-8 transition-shadow duration-300 hover:shadow-xl;
   }
   
   .nav-link-wedding {

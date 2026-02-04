@@ -11,7 +11,7 @@ const Hero = () => {
           src="/cam_nico.jpg"
           alt="Mariage Camille & Nicolas"
           fill
-          className="object-cover object-[center_25%]" // Focus on the top part (faces)
+          className="object-cover object-[10%_center] md:object-[center_25%]" // Mobile: Décalé droite (pour voir visages à gauche) | Desktop: Décalé haut
           priority
           quality={90}
         />

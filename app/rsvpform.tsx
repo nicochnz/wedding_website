@@ -1,3 +1,5 @@
+"use client";
+
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -9,10 +11,10 @@ import { Send, Heart } from 'lucide-react';
 import { sendRSVPEmail } from './actions';
 
 const days = [
-  { id: 'jour1', label: 'Jeudi 18 Août'},
-  { id: 'jour2', label: 'Vendredi 19 Août'},
-  { id: 'jour3', label: 'Samedi 20 Août'},
-  { id: 'jour4', label: 'Dimanche 21 Août'},  
+  { id: 'jour1', label: 'Jeudi 20 Août', subtitle: 'Arrivée & Apéro' },
+  { id: 'jour2', label: 'Vendredi 21 Août', subtitle: 'Jour du mariage' },
+  { id: 'jour3', label: 'Samedi 22 Août', subtitle: 'Journée domaine' },
+  { id: 'jour4', label: 'Dimanche 23 Août', subtitle: 'Brunch & Départ' },
 ];
 
 const mealOptions = [
@@ -66,7 +68,8 @@ const RSVPForm = () => {
     <section id="rsvp" className="py-20">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="heading-section gold-underline pb-4">Confirmation de votre présence</h2>
+          <p className="text-elegant text-muted-foreground mb-2">Confirmez votre présence</p>
+          <h2 className="heading-section gold-underline pb-4">RSVP</h2>
         </div>
 
         <div className="max-w-2xl mx-auto">
@@ -82,7 +85,7 @@ const RSVPForm = () => {
                   name="prenom"
                   placeholder="Votre prénom"
                   required
-                  className="bg-background border-border focus:ring-primary"
+                  className="bg-white/50 border-primary/20 focus:ring-primary focus:border-primary" // Plus doux
                 />
               </div>
               <div className="space-y-2">
@@ -94,7 +97,7 @@ const RSVPForm = () => {
                   name="nom"
                   placeholder="Votre nom"
                   required
-                  className="bg-background border-border focus:ring-primary"
+                  className="bg-white/50 border-primary/20 focus:ring-primary focus:border-primary"
                 />
               </div>
             </div>
@@ -109,7 +112,7 @@ const RSVPForm = () => {
                 type="email"
                 placeholder="votre@email.com"
                 required
-                className="bg-background border-border focus:ring-primary"
+                className="bg-white/50 border-primary/20 focus:ring-primary focus:border-primary"
               />
             </div>
 
@@ -124,8 +127,8 @@ const RSVPForm = () => {
                     key={day.id}
                     className={`flex items-center gap-4 p-4 rounded-lg border cursor-pointer transition-all ${
                       selectedDays.includes(day.id)
-                        ? 'border-primary bg-primary/5'
-                        : 'border-border hover:border-primary/50'
+                        ? 'border-primary bg-primary/10'
+                        : 'border-primary/10 hover:border-primary/30 bg-white/50'
                     }`}
                   >
                     <Checkbox
@@ -136,12 +139,12 @@ const RSVPForm = () => {
                     <div>
                       <span className="font-medium">{day.label}</span>
                       <span className="block text-sm text-muted-foreground">
+                        {day.subtitle}
                       </span>
                     </div>
                   </label>
                 ))}
               </div>
-              {/* Hidden input for validation if needed, handled via state append in action */}
             </div>
 
             {/* Meal Selection */}
@@ -159,8 +162,8 @@ const RSVPForm = () => {
                     key={option.value}
                     className={`flex items-center gap-4 p-4 rounded-lg border cursor-pointer transition-all ${
                       selectedMeal === option.value
-                        ? 'border-primary bg-primary/5'
-                        : 'border-border hover:border-primary/50'
+                        ? 'border-primary bg-primary/10'
+                        : 'border-primary/10 hover:border-primary/30 bg-white/50'
                     }`}
                   >
                     <RadioGroupItem value={option.value} className="text-primary" />
@@ -184,7 +187,7 @@ const RSVPForm = () => {
                 id="allergies"
                 name="allergies"
                 placeholder="Indiquez vos restrictions alimentaires..."
-                className="bg-background border-border focus:ring-primary"
+                className="bg-white/50 border-primary/20 focus:ring-primary focus:border-primary"
               />
             </div>
 
@@ -192,7 +195,7 @@ const RSVPForm = () => {
             <Button
               type="submit"
               disabled={isSubmitting}
-              className="w-full bg-primary hover:bg-primary/90 text-primary-foreground py-6 text-base font-medium tracking-wide"
+              className="w-full bg-primary hover:bg-primary/90 text-primary-foreground py-6 text-base font-medium tracking-wide shadow-md"
             >
               {isSubmitting ? (
                 <span className="flex items-center gap-2">
