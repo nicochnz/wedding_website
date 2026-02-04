@@ -1,8 +1,25 @@
 "use client";
+
+import Navbar from "./navbar";
+import Footer from "./footer";
+import Hero from "./hero";
+import MenuSection from "./menusection";
+import ProgrammeSection from "./programmesection";
+import RSVPForm from "./rsvpform";
+import PaymentBanner from "./paymentbanner";
+import { Toaster } from "sonner";
+
 export default function Home() {
   return (
-    <div> 
-      <h1>Cam & Nico</h1>
-    </div>
+    <main className="min-h-screen bg-background">
+      <Navbar />
+      <Hero />
+      <MenuSection />
+      <RSVPForm />
+      <PaymentBanner />
+      <ProgrammeSection />
+      <Footer />
+      <Toaster position="top-center" />
+    </main>
   );
 }

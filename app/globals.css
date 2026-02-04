@@ -1,19 +1,125 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@theme {
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+
+  --color-gold-light: hsl(45, 60%, 70%);
+  --color-champagne: hsl(40, 50%, 94%);
+
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
+
+  --animate-fade-in: fade-in 1s ease-out forwards;
+  --animate-fade-in-up: fade-in-up 1s ease-out forwards;
+  --animate-float: float 3s ease-in-out infinite;
+
+  @keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  @keyframes fade-in-up {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 20 14.3% 4.1%;
+    --card: 0 0% 100%;
+    --card-foreground: 20 14.3% 4.1%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 20 14.3% 4.1%;
+    --primary: 45 50% 55%; /* Goldish */
+    --primary-foreground: 26 83.3% 14.1%;
+    --secondary: 40 30% 96%; /* Off-white/Beige */
+    --secondary-foreground: 24 9.8% 10%;
+    --muted: 60 4.8% 95.9%;
+    --muted-foreground: 25 5.3% 44.7%;
+    --accent: 60 4.8% 95.9%;
+    --accent-foreground: 24 9.8% 10%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 60 9.1% 97.8%;
+    --border: 20 5.9% 90%;
+    --input: 20 5.9% 90%;
+    --ring: 45 50% 55%;
+    --radius: 0.5rem;
+  }
+}
+
+@layer utilities {
+  .text-elegant {
+    @apply font-serif italic tracking-wide;
+  }
+  
+  .heading-display {
+    @apply font-serif text-5xl md:text-7xl font-medium tracking-tight;
+  }
+
+  .heading-section {
+    @apply font-serif text-3xl md:text-4xl text-foreground;
+  }
+
+  .gold-underline {
+    @apply relative inline-block;
+  }
+  .gold-underline::after {
+    content: '';
+    @apply absolute -bottom-2 left-1/2 -translate-x-1/2 w-16 h-0.5 bg-primary;
+  }
+
+  .card-wedding {
+    @apply bg-card text-card-foreground rounded-xl border border-border/50 shadow-sm p-8;
+  }
+  
+  .nav-link-wedding {
+    @apply relative text-sm uppercase tracking-widest font-medium py-2;
+  }
+  .nav-link-wedding::after {
+    content: '';
+    @apply absolute bottom-0 left-0 w-0 h-px bg-current transition-all duration-300;
+  }
+  .nav-link-wedding:hover::after {
+    @apply w-full;
+  }
+
+  .divider-ornament {
+    @apply flex items-center justify-center my-8 text-2xl;
+  }
+  .divider-ornament::before,
+  .divider-ornament::after {
+    content: '';
+    @apply h-px w-12 bg-border mx-4;
+  }
 }
