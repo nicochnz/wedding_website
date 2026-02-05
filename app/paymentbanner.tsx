@@ -8,26 +8,26 @@ const PaymentBanner = () => {
 RELEVÉ D'IDENTITÉ BANCAIRE (RIB)
 ================================
 
-Titulaire du compte: Marie & Jean DUPONT
+Titulaire du compte: Camille & Nicolas CHICHE
 
-Banque: Banque Exemple
-Code Banque: 12345
-Code Guichet: 67890
-Numéro de compte: 12345678901
-Clé RIB: 23
+Banque: Boursobank
+Code Banque: 40618
+Code Guichet: 80443
+Numéro de compte: 00040761947
+Clé RIB: 51
 
-IBAN: FR76 1234 5678 9012 3456 7890 123
-BIC: EXMPFRPP
+IBAN: FR76 4061 8804 4300 0407 6194 751
+BIC: BOUS FRPP XXX
 
 ================================
-Merci pour votre générosité !
+Merci de votre présence !
     `.trim();
 
     const blob = new Blob([ribContent], { type: 'text/plain' });
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = 'RIB-Mariage-Marie-Jean.txt';
+    a.download = 'RIB-Mariage-Camille-Nicolas.txt';
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
