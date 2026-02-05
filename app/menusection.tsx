@@ -2,19 +2,23 @@ import { Utensils } from 'lucide-react';
 
 const menuItems = {
   entrees: [
-    'Foie gras de canard, chutney de figues',
-    'Salade de homard, vinaigrette aux agrumes',
-    'Velouté de butternut, éclats de noisettes',
+    'Toasts de foie gras',
+    'Amuse-bouche végétariens',
+    'Chipirons au brasero',
+    'Minis croques truffe',
+    'Planches de charcuterie fines',
+    'Tataki de boeuf',
   ],
   plats: [
-    { name: 'Filet de bœuf Wellington', type: 'Viande' },
-    { name: 'Saint-Jacques poêlées, risotto crémeux', type: 'Poisson' },
-    { name: 'Tian de légumes, sauce vierge', type: 'Végétarien' },
+    { name: 'Magret de canard sauce miel', type: 'Viande' },
+    { name: 'Côte de boeuf sauce bordelaise', type: 'Viande' },
+    { name: 'Choix du poisson : Bar - Daurade - Thon - Saumon', type: 'Poisson' },
+    { name: 'Tian de légumes, sauce vierge ou Risotto de légumes', type: 'Végétarien' },
   ],
   desserts: [
-    'Pièce montée traditionnelle',
-    'Assortiment de mignardises',
-    'Fontaine de champagne',
+    'Planche de fromages',
+    'Mignardises',
+    'Ananas rôtis',
   ],
 };
 

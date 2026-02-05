@@ -18,8 +18,8 @@ const days = [
 ];
 
 const mealOptions = [
-  { value: 'viande', label: 'Viande', description: 'Filet de bœuf Wellington' },
-  { value: 'poisson', label: 'Poisson', description: 'Saint-Jacques poêlées' },
+  { value: 'viande', label: 'Viande', description: 'Magret de canard & côte de boeuf' },
+  { value: 'poisson', label: 'Poisson', description: 'Bar - Daurade - Thon - Saumon' },
   { value: 'vegetarien', label: 'Végétarien', description: 'Tian de légumes' },
 ];
 
@@ -180,12 +180,12 @@ const RSVPForm = () => {
             {/* Allergies */}
             <div className="space-y-2">
               <Label htmlFor="allergies" className="text-sm font-medium">
-                Allergies ou régimes spéciaux (optionnel)
+                Allergies ou poissons préférés (optionnel)
               </Label>
               <Input
                 id="allergies"
                 name="allergies"
-                placeholder="Indiquez vos restrictions alimentaires..."
+                placeholder="Indiquez vos allergies ou poissons préférés..."
                 className="bg-white/50 border-primary/20 focus:ring-primary focus:border-primary"
               />
             </div>

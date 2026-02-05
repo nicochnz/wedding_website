@@ -109,7 +109,7 @@
   }
 
   .card-wedding {
-    @apply bg-white/70 backdrop-blur-md text-card-foreground rounded-xl border border-primary/20 shadow-md p-8 transition-shadow duration-300 hover:shadow-xl;
+    @apply bg-white/70 backdrop-blur-md text-card-foreground rounded-xl border border-primary/20 shadow-md p-8;
   }
   
   .nav-link-wedding {
