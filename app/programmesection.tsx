@@ -1,46 +1,41 @@
 "use client";
 
-import { useState } from 'react';
-import { motion, AnimatePresence, PanInfo } from 'framer-motion';
-import { MapPin, Sparkles, UtensilsCrossed, Music, Coffee, Heart, ChevronRight, CalendarDays, Wine, HouseHeart } from 'lucide-react';
+import { useRef } from 'react';
+import { MapPin, Sparkles, UtensilsCrossed, Music, Coffee, Heart, CalendarDays, Wine, House, ChevronLeft, ChevronRight } from 'lucide-react';
 
-// Données du programme
 const programmeData = [
   {
     day: 'Jeudi 20 Août',
     fullDate: '20 Août 2026',
     title: 'Arrivée & Apéro',
-    description: 'Installation & répartition des chambres',
     events: [
-      { time: '16h00', title: 'Arrivée des proches', icon: MapPin },
-      { time: '18h30', title: 'Apéro et installation', icon: Wine },
-      { time: '20h30', title: 'Dîner', icon: UtensilsCrossed },
+      { time: '16h00', title: 'Arrivée des proches', icon: MapPin},
+      { time: '18h30', title: 'Apéro et installation', icon: Wine},
+      { time: '20h30', title: 'Dîner', icon: UtensilsCrossed},
     ],
   },
   {
     day: 'Vendredi 21 Août',
     fullDate: '21 Août 2026',
     title: 'Jour du mariage',
-    description: 'On se marie !',
     events: [
       { time: '9h30', title: 'Départ du domaine', icon: MapPin},
-      { time: '11h00', title: 'Mairie de Mérignac', icon: HouseHeart, },
+      { time: '11h00', title: 'Mairie de Mérignac', icon: House, },
       { time: '13h30', title: 'Vin d\'honneur', icon: Wine,},
       { time: '18h00', title: 'Apéro', icon: Wine, },
       { time: '20h00', title: 'Dîner', icon: UtensilsCrossed},
-      { time: '23h00', title: 'Soirée', icon: Music, },
+      { time: '23h00', title: 'Soirée', icon: Music},
     ],
   },
   {
     day: 'Samedi 22 Août',
     fullDate: '22 Août 2026',
     title: 'Journée domaine',
-    description: 'Journée au domaine',
     events: [
       { time: '9h00', title: 'Petit-déjeuner', icon: Coffee},
-      { time: '12h00', title: 'Piscine apéro', icon: Sparkles},
-      { time: '13h30', title: 'Repas', icon: UtensilsCrossed},
-      { time: '18h00', title: 'Apéro', icon: Wine},
+      { time: '12h00', title: 'Piscine apéro', icon: Sparkles, },
+      { time: '13h30', title: 'Repas', icon: UtensilsCrossed,},
+      { time: '18h00', title: 'Apéro', icon: Wine, },
       { time: '20h00', title: 'Dîner', icon: UtensilsCrossed},
       { time: '23h00', title: 'Soirée', icon: Music},
     ],
@@ -49,7 +44,6 @@ const programmeData = [
     day: 'Dimanche 23 Août',
     fullDate: '23 Août 2026',
     title: 'Brunch & Départ',
-    description: 'Dernier petit-déjeuner et départ',
     events: [
       { time: '12h00', title: 'Brunch', icon: Coffee},
       { time: '16h00', title: 'Départ', icon: Heart},
@@ -58,151 +52,96 @@ const programmeData = [
 ];
 
 const ProgrammeSection = () => {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const [direction, setDirection] = useState(0);
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
 
-  // Fonction pour passer à la carte suivante
-  const nextCard = () => {
-    setDirection(1);
-    setActiveIndex((prev) => (prev + 1) % programmeData.length);
-  };
-
-  // Gestion du swipe
-  const handleDragEnd = (event: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) => {
-    if (info.offset.x < -100) {
-      // Swipe gauche -> Suivant
-      nextCard();
-    } else if (info.offset.x > 100) {
-      // Swipe droite -> Précédent (optionnel, ici on boucle vers l'avant pour simplifier l'UX "pile")
-      // Mais on peut aussi faire : setActiveIndex((prev) => (prev - 1 + data.length) % data.length);
-      nextCard(); 
+  const scroll = (direction: 'left' | 'right') => {
+    if (scrollContainerRef.current) {
+      const scrollAmount = 340; // Largeur approximative d'une carte + gap
+      scrollContainerRef.current.scrollBy({
+        left: direction === 'left' ? -scrollAmount : scrollAmount,
+        behavior: 'smooth'
+      });
     }
   };
 
-  // Calcul pour l'effet de pile (stack)
-  const getCardStyle = (index: number) => {
-    // Position relative par rapport à la carte active
-    const diff = (index - activeIndex + programmeData.length) % programmeData.length;
-    
-    // On n'affiche que les 3 premières cartes de la pile
-    if (diff > 2) return { zIndex: 0, opacity: 0, scale: 0.8, y: 0 };
-
-    return {
-      zIndex: 30 - diff * 10, // 30, 20, 10
-      scale: 1 - diff * 0.05, // 1, 0.95, 0.90
-      y: diff * 20, // Décalage vertical: 0px, 20px, 40px
-      opacity: 1 - diff * 0.3, // 1, 0.7, 0.4
-    };
-  };
-
   return (
-    <section id="programme" className="py-20 overflow-hidden min-h-[900px]">
-      <div className="container mx-auto px-4 h-full flex flex-col">
-        <div className="text-center mb-10">
+    <section id="programme" className="py-20 bg-secondary/30">
+      <div className="container mx-auto px-4">
+        <div className="text-center mb-12">
           <p className="text-elegant text-muted-foreground mb-2">Le déroulement</p>
           <h2 className="heading-section gold-underline pb-4">Programme du Week-end</h2>
         </div>
 
-        {/* Zone des cartes */}
-        <div className="relative flex-1 flex items-center justify-center min-h-[700px] w-full max-w-md mx-auto perspective-1000">
-          <AnimatePresence initial={false} mode='popLayout'>
-            {programmeData.map((day, index) => {
-              const isFront = index === activeIndex;
-              const style = getCardStyle(index);
-              
-              // On ne rend que les cartes pertinentes pour la performance
-              const diff = (index - activeIndex + programmeData.length) % programmeData.length;
-              if (diff > 2 && !isFront) return null;
+        <div className="relative max-w-7xl mx-auto group">
+          {/* Boutons de navigation (visibles sur desktop au survol) */}
+          <button 
+            onClick={() => scroll('left')}
+            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 z-10 bg-white/80 p-2 rounded-full shadow-lg border border-primary/20 text-primary hover:bg-primary hover:text-white transition-all duration-300 opacity-0 group-hover:opacity-100 hidden md:block"
+            aria-label="Précédent"
+          >
+            <ChevronLeft className="w-6 h-6" />
+          </button>
+          
+          <button 
+            onClick={() => scroll('right')}
+            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 z-10 bg-white/80 p-2 rounded-full shadow-lg border border-primary/20 text-primary hover:bg-primary hover:text-white transition-all duration-300 opacity-0 group-hover:opacity-100 hidden md:block"
+            aria-label="Suivant"
+          >
+            <ChevronRight className="w-6 h-6" />
+          </button>
 
-              return (
-                <motion.div
-                  key={day.day}
-                  // Retrait de "touch-pan-y" qui pouvait causer le lag et ajout de "touch-action-none" pour le drag
-                  className={`absolute w-full top-0 ${isFront ? 'cursor-grab active:cursor-grabbing' : ''}`}
-                  style={{
-                    zIndex: style.zIndex,
-                    touchAction: isFront ? 'pan-y' : 'auto' // Permet le scroll vertical mais bloque l'horizontal pour le swipe fluide
-                  }}
-                  animate={{
-                    scale: style.scale,
-                    y: style.y,
-                    opacity: style.opacity,
-                  }}
-                  drag={isFront ? "x" : false}
-                  dragConstraints={{ left: 0, right: 0 }}
-                  dragElastic={0.2} // Ajoute un peu de résistance pour éviter les swipes accidentels trop rapides
-                  onDragEnd={handleDragEnd}
-                  transition={{ type: "spring", stiffness: 300, damping: 30 }}
-                  // Animation de sortie quand on swipe (uniquement pour la carte active qui part)
-                  exit={{ x: -300, opacity: 0, rotate: -20, transition: { duration: 0.2 } }}
-                  onClick={isFront ? undefined : () => {
-                     // Si on clique sur une carte visible derrière, on avance jusqu'à elle
-                     setActiveIndex(index);
-                  }}
-                >
-                  {/* Design de la Carte */}
-                  <div className="bg-white rounded-3xl shadow-xl overflow-hidden border border-primary/10 select-none h-[650px] flex flex-col">
-                    {/* En-tête de la carte */}
-                    <div className="bg-primary/5 p-5 text-center border-b border-primary/10 shrink-0">
-                      <div className="inline-flex items-center gap-2 text-primary mb-1 bg-white px-3 py-1 rounded-full shadow-sm text-xs font-bold uppercase tracking-widest">
-                        <CalendarDays className="w-3 h-3" />
-                        {day.fullDate}
-                      </div>
-                      <h3 className="font-serif text-2xl text-foreground mt-2">{day.day.split(' ')[0]}</h3>
-                      <p className="text-muted-foreground text-xs italic mt-1">{day.title}</p>
+          {/* 
+             Carrousel unifié avec scrollbar cachée
+          */}
+          <div 
+            ref={scrollContainerRef}
+            className="
+              flex overflow-x-auto pb-4 -mx-4 px-4 md:mx-0 md:px-4 gap-6 snap-x snap-mandatory
+              no-scrollbar /* Utilisation de notre classe personnalisée */
+            "
+          >
+            {programmeData.map((day, index) => (
+              <div 
+                key={index} 
+                className="snap-center shrink-0 w-[85vw] md:w-[320px] h-[550px]"
+              >
+                <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-sm border border-primary/10 overflow-hidden h-full flex flex-col hover:shadow-md transition-all duration-300">
+                  
+                  {/* En-tête de la carte */}
+                  <div className="bg-primary/5 p-6 text-center border-b border-primary/10 shrink-0">
+                    <div className="inline-flex items-center gap-2 text-primary mb-3 bg-white px-3 py-1 rounded-full shadow-sm text-xs font-bold uppercase tracking-widest mx-auto">
+                      <CalendarDays className="w-3 h-3" />
+                      {day.fullDate}
                     </div>
-
-                    {/* Contenu de la carte - No overflow-y-auto */}
-                    <div className="p-4 flex-1 flex flex-col justify-center">
-                      <p className="text-center text-muted-foreground mb-6 text-sm px-4 shrink-0">
-                        {day.description}
-                      </p>
-
-                      <div className="space-y-4 relative pl-2">
-                         {/* Ligne verticale de temps */}
-                         <div className="absolute left-[19px] top-2 bottom-2 w-px bg-border/60" />
-
-                        {day.events.map((event, i) => (
-                          <div key={i} className="flex items-start gap-4 relative z-10">
-                            <div className="shrink-0 w-10 h-10 rounded-full bg-white border border-primary/20 flex items-center justify-center shadow-sm">
-                              <event.icon className="w-4 h-4 text-primary" />
-                            </div>
-                            <div className="pt-2">
-                              <span className="text-xs font-bold text-primary tracking-wide bg-primary/5 px-2 py-0.5 rounded">
-                                {event.time}
-                              </span>
-                              <h4 className="font-medium text-gray-900 mt-1 text-sm">{event.title}</h4>
-                              { <p className="text-xs text-muted-foreground mt-0.5 leading-tight"></p>}
-                            </div>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-
-                    {/* Footer de la carte (Indication) */}
-                    {isFront && (
-                      <div className="p-3 bg-gray-50 text-center text-xs text-muted-foreground border-t border-gray-100 flex items-center justify-center gap-2 animate-pulse shrink-0">
-                        Swipez pour la suite <ChevronRight className="w-3 h-3" />
-                      </div>
-                    )}
+                    <h3 className="font-serif text-2xl text-foreground">{day.day.split(' ')[0]}</h3>
+                    <p className="text-muted-foreground text-sm italic mt-1">{day.title}</p>
                   </div>
-                </motion.div>
-              );
-            })}
-          </AnimatePresence>
-        </div>
 
-        {/* Indicateurs (points) */}
-        <div className="flex justify-center gap-2 mt-8 z-10">
-          {programmeData.map((_, idx) => (
-            <button
-              key={idx}
-              onClick={() => setActiveIndex(idx)}
-              className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
-                idx === activeIndex ? 'bg-primary w-6' : 'bg-primary/20 hover:bg-primary/40'
-              }`}
-            />
-          ))}
+                  {/* Contenu de la carte */}
+                  <div className="p-6 flex-1 flex flex-col overflow-y-auto no-scrollbar"> {/* Scrollbar cachée ici aussi */}
+                    <div className="space-y-6 relative pl-2">
+                       {/* Ligne verticale de temps */}
+                       <div className="absolute left-[19px] top-2 bottom-2 w-px bg-border/60" />
+
+                      {day.events.map((event, i) => (
+                        <div key={i} className="flex items-start gap-4 relative z-10">
+                          <div className="shrink-0 w-10 h-10 rounded-full bg-white border border-primary/20 flex items-center justify-center shadow-sm">
+                            <event.icon className="w-4 h-4 text-primary" />
+                          </div>
+                          <div className="pt-1">
+                            <span className="text-[10px] font-bold text-primary tracking-wide bg-primary/5 px-2 py-0.5 rounded uppercase">
+                              {event.time}
+                            </span>
+                            <h4 className="font-medium text-gray-900 mt-1 text-sm">{event.title}</h4>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>

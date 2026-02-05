@@ -79,15 +79,11 @@
   
   body {
     @apply bg-background text-foreground;
-    /* On change de stratégie : Utilisation d'un motif CSS pur (pois) très visible pour tester, puis on affinera */
-    background-color: #fcfbf7; /* Crème de base */
+    background-color: #f9f7f2;
     background-image: 
-      radial-gradient(#d4c5a5 1px, transparent 1px), 
-      radial-gradient(#d4c5a5 1px, transparent 1px);
-    background-size: 20px 20px;
-    background-position: 0 0, 10px 10px;
-    /* Opacité globale du motif pour qu'il reste élégant mais visible */
-    background-blend-mode: multiply;
+      radial-gradient(circle at 100% 0%, hsla(42, 60%, 75%, 0.25) 0%, transparent 35%),
+      radial-gradient(circle at 0% 100%, hsla(42, 60%, 75%, 0.25) 0%, transparent 35%),
+      url("data:image/svg+xml,%3Csvg width='64' height='64' viewBox='0 0 64 64' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M8 16c4.418 0 8-3.582 8-8s-3.582-8-8-8-8 3.582-8 8 3.582 8 8 8zm0-2c3.314 0 6-2.686 6-6s-2.686-6-6-6-6 2.686-6 6 2.686 6 6 6zm33.414-6l5.95-5.95L45.95.636 40 6.586 34.05.636 32.636 2.05 38.586 8l-5.95 5.95 1.414 1.414L40 9.414l5.95 5.95 1.414-1.414L41.414 8zM40 48c4.418 0 8-3.582 8-8s-3.582-8-8-8-8 3.582-8 8 3.582 8 8 8zm0-2c3.314 0 6-2.686 6-6s-2.686-6-6-6-6 2.686-6 6 2.686 6 6 6zM9.414 40l5.95-5.95-1.414-1.414L8 38.586l-5.95-5.95L.636 34.05 6.586 40l-5.95 5.95 1.414 1.414L8 41.414l5.95 5.95 1.414-1.414L9.414 40z' fill='%23d4c5a5' fill-opacity='0.25' fill-rule='evenodd'/%3E%3C/svg%3E");
   }
 }
 
@@ -113,7 +109,7 @@
   }
 
   .card-wedding {
-    @apply bg-white/80 backdrop-blur-md text-card-foreground rounded-xl border border-primary/20 shadow-md p-8 ;
+    @apply bg-white/70 backdrop-blur-md text-card-foreground rounded-xl border border-primary/20 shadow-md p-8 transition-shadow duration-300 hover:shadow-xl;
   }
   
   .nav-link-wedding {
@@ -134,5 +130,14 @@
   .divider-ornament::after {
     content: '';
     @apply h-px w-12 bg-border mx-4;
+  }
+
+  /* Utility pour cacher la scrollbar tout en gardant le scroll */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
   }
 }
