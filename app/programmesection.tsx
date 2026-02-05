@@ -20,7 +20,8 @@ const programmeData = [
     title: 'Jour du mariage',
     events: [
       { time: '9h30', title: 'Départ du domaine', icon: MapPin},
-      { time: '11h00', title: 'Mairie de Mérignac', icon: House, },
+      { time: '10h30', title: 'Rdv mairie de Mérignac', icon: MapPin},
+      { time: '11h00', title: 'Mariage', icon: House, },
       { time: '13h30', title: 'Vin d\'honneur', icon: Wine,},
       { time: '18h00', title: 'Apéro', icon: Wine, },
       { time: '20h00', title: 'Dîner', icon: UtensilsCrossed},
