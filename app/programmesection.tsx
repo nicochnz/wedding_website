@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef } from 'react';
-import { MapPin, Sparkles, UtensilsCrossed, Music, Coffee, Heart, CalendarDays, Wine, House, ChevronLeft, ChevronRight, Info } from 'lucide-react';
+import { MapPin, Sparkles, UtensilsCrossed, Music, Coffee, Heart, CalendarDays, Wine, House, ChevronLeft, ChevronRight, Info, HouseHeart } from 'lucide-react';
 
 const programmeData = [
   {
@@ -20,7 +20,8 @@ const programmeData = [
     title: 'Jour du mariage',
     events: [
       { time: '9h30', title: 'Départ du domaine', icon: MapPin},
-      { time: '11h00', title: 'Mairie de Mérignac', icon: House, },
+      { time: '10h30', title: 'Rdv mairie de Mérignac', icon: MapPin},
+      { time: '11h00', title: 'Mariage', icon: HouseHeart, },
       { time: '13h30', title: 'Vin d\'honneur', icon: Wine,},
       { time: '18h00', title: 'Apéro', icon: Wine, },
       { time: '20h00', title: 'Dîner', icon: UtensilsCrossed},
@@ -46,6 +47,7 @@ const programmeData = [
     title: 'Brunch & Départ',
     events: [
       { time: '12h00', title: 'Brunch', icon: Coffee},
+      { time: '14h00', title: 'Apéro', icon: Wine},
       { time: '16h00', title: 'Départ', icon: Heart},
     ],
   },
