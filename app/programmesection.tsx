@@ -12,9 +12,9 @@ const programmeData = [
     title: 'Arrivée & Apéro',
     description: 'Installation & répartition des chambres',
     events: [
-      { time: '16h00', title: 'Arrivée des proches', icon: MapPin, description: 'Installation dans les chambres' },
-      { time: '18h30', title: 'Apéro et installation', icon: Wine, description: 'Apéro et installation des lieux' },
-      { time: '20h30', title: 'Dîner', icon: UtensilsCrossed, description: 'Dîner décontracté' },
+      { time: '16h00', title: 'Arrivée des proches', icon: MapPin },
+      { time: '18h30', title: 'Apéro et installation', icon: Wine },
+      { time: '20h30', title: 'Dîner', icon: UtensilsCrossed },
     ],
   },
   {
@@ -27,7 +27,7 @@ const programmeData = [
       { time: '11h00', title: 'Mairie de Mérignac', icon: HouseHeart, },
       { time: '13h30', title: 'Vin d\'honneur', icon: Wine,},
       { time: '18h00', title: 'Apéro', icon: Wine, },
-      { time: '20h00', title: 'Dîner', icon: UtensilsCrossed, description: 'Dîner du mariage' },
+      { time: '20h00', title: 'Dîner', icon: UtensilsCrossed},
       { time: '23h00', title: 'Soirée', icon: Music, },
     ],
   },
@@ -37,12 +37,12 @@ const programmeData = [
     title: 'Journée domaine',
     description: 'Journée au domaine',
     events: [
-      { time: '9h00', title: 'Petit-déjeuner', icon: Coffee, description: 'En terrasse' },
-      { time: '12h00', title: 'Piscine apéro', icon: Sparkles, },
-      { time: '13h30', title: 'Repas', icon: UtensilsCrossed,},
-      { time: '18h00', title: 'Apéro', icon: Wine, },
-      { time: '20h00', title: 'Dîner', icon: UtensilsCrossed, description: 'Dîner du mariage' },
-      { time: '23h00', title: 'Soirée', icon: Music,},
+      { time: '9h00', title: 'Petit-déjeuner', icon: Coffee},
+      { time: '12h00', title: 'Piscine apéro', icon: Sparkles},
+      { time: '13h30', title: 'Repas', icon: UtensilsCrossed},
+      { time: '18h00', title: 'Apéro', icon: Wine},
+      { time: '20h00', title: 'Dîner', icon: UtensilsCrossed},
+      { time: '23h00', title: 'Soirée', icon: Music},
     ],
   },
   {
@@ -51,8 +51,8 @@ const programmeData = [
     title: 'Brunch & Départ',
     description: 'Dernier petit-déjeuner et départ',
     events: [
-      { time: '12h00', title: 'Brunch', icon: Coffee, description: 'Café, œufs et bacon' },
-      { time: '16h00', title: 'Départ', icon: Heart, description: 'Départ des invités' },
+      { time: '12h00', title: 'Brunch', icon: Coffee},
+      { time: '16h00', title: 'Départ', icon: Heart},
     ],
   },
 ];
@@ -172,7 +172,7 @@ const ProgrammeSection = () => {
                                 {event.time}
                               </span>
                               <h4 className="font-medium text-gray-900 mt-1 text-sm">{event.title}</h4>
-                              {event.description && <p className="text-xs text-muted-foreground mt-0.5 leading-tight">{event.description}</p>}
+                              { <p className="text-xs text-muted-foreground mt-0.5 leading-tight"></p>}
                             </div>
                           </div>
                         ))}

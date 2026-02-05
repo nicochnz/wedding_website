@@ -117,7 +117,7 @@ const Navbar = () => {
           ))}
           
           <div className="mt-8 text-sm text-muted-foreground font-light">
-            19 — 21 Août 2026
+            20 — 23 Août 2026
           </div>
         </div>
       </div>
