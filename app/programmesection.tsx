@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef } from 'react';
-import { MapPin, Sparkles, UtensilsCrossed, Music, Coffee, Heart, CalendarDays, Wine, House, ChevronLeft, ChevronRight } from 'lucide-react';
+import { MapPin, Sparkles, UtensilsCrossed, Music, Coffee, Heart, CalendarDays, Wine, House, ChevronLeft, ChevronRight, Info } from 'lucide-react';
 
 const programmeData = [
   {
@@ -20,8 +20,7 @@ const programmeData = [
     title: 'Jour du mariage',
     events: [
       { time: '9h30', title: 'Départ du domaine', icon: MapPin},
-      { time: '10h30', title: 'Rdv mairie de Mérignac', icon: MapPin},
-      { time: '11h00', title: 'Mariage', icon: House, },
+      { time: '11h00', title: 'Mairie de Mérignac', icon: House, },
       { time: '13h30', title: 'Vin d\'honneur', icon: Wine,},
       { time: '18h00', title: 'Apéro', icon: Wine, },
       { time: '20h00', title: 'Dîner', icon: UtensilsCrossed},
@@ -34,7 +33,7 @@ const programmeData = [
     title: 'Journée domaine',
     events: [
       { time: '9h00', title: 'Petit-déjeuner', icon: Coffee},
-      { time: '12h00', title: 'Piscine apéro', icon: Sparkles, },
+      { time: '11h00', title: 'Multiples activités', icon: Sparkles, },
       { time: '13h30', title: 'Repas', icon: UtensilsCrossed,},
       { time: '18h00', title: 'Apéro', icon: Wine, },
       { time: '20h00', title: 'Dîner', icon: UtensilsCrossed},
@@ -71,6 +70,23 @@ const ProgrammeSection = () => {
         <div className="text-center mb-12">
           <p className="text-elegant text-muted-foreground mb-2">Le déroulement</p>
           <h2 className="heading-section gold-underline pb-4">Programme du Week-end</h2>
+        </div>
+
+        {/* Info Box */}
+        <div className="max-w-3xl mx-auto mb-16">
+          <div className="bg-white/60 backdrop-blur-md border border-primary/20 rounded-lg p-6 shadow-sm flex flex-col md:flex-row gap-4 items-start md:items-center text-sm text-muted-foreground leading-relaxed">
+            <div className="shrink-0 p-3 bg-primary/10 rounded-full text-primary">
+              <Info className="w-5 h-5" />
+            </div>
+            <div>
+              <p className="mb-2">
+                <span className="font-medium text-foreground">Activités & Détente :</span> Dans le domaine, profitez de la piscine, du spa, du terrain de pétanque, du ping-pong, du baby-foot, du terrain de beach-volley, des jeux de société, etc.
+              </p>
+              <p>
+                <span className="font-medium text-foreground">À ne pas oublier :</span> Vos lunettes de soleil, maillot de bain, bouteille d&apos;eau et tenue de sport !
+              </p>
+            </div>
+          </div>
         </div>
 
         <div className="relative max-w-7xl mx-auto group">
