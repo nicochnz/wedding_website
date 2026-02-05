@@ -180,12 +180,12 @@ const RSVPForm = () => {
             {/* Allergies */}
             <div className="space-y-2">
               <Label htmlFor="allergies" className="text-sm font-medium">
-                Allergies ou poissons préférés (optionnel)
+                Allergies (optionnel)
               </Label>
               <Input
                 id="allergies"
                 name="allergies"
-                placeholder="Indiquez vos allergies ou poissons choisis..."
+                placeholder="Indiquez vos allergies..."
                 className="bg-white/50 border-primary/20 focus:ring-primary focus:border-primary"
               />
             </div>

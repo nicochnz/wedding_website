@@ -4,21 +4,21 @@ const menuItems = {
   entrees: [
     'Toasts de foie gras',
     'Amuse-bouche végétariens',
-    'Chipirons au brasero',
+    'Chipirons',
     'Minis croques truffe',
-    'Planches de charcuterie fines',
+    'Planche de charcuterie fine',
     'Tataki de boeuf',
   ],
   plats: [
     { name: 'Magret de canard sauce miel', type: 'Viande' },
     { name: 'Côte de boeuf sauce bordelaise', type: 'Viande' },
-    { name: 'Choix du poisson : Bar - Daurade - Thon - Saumon', type: 'Poisson' },
+    { name: 'Poisson selon pêche du jour (Bar - Daurade - Thon - Saumon)', type: 'Poisson' },
     { name: 'Tian de légumes, sauce vierge ou Risotto de légumes', type: 'Végétarien' },
   ],
   desserts: [
     'Planche de fromages',
     'Mignardises',
-    'Ananas rôtis',
+    'Ananas rôti',
   ],
 };
 
