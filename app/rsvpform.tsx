@@ -185,7 +185,7 @@ const RSVPForm = () => {
               <Input
                 id="allergies"
                 name="allergies"
-                placeholder="Indiquez vos allergies ou poissons préférés..."
+                placeholder="Indiquez vos allergies ou poissons choisis..."
                 className="bg-white/50 border-primary/20 focus:ring-primary focus:border-primary"
               />
             </div>
