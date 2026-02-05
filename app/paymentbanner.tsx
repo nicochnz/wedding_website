@@ -43,7 +43,7 @@ Merci de votre présence !
           </div>
           
           <h2 className="font-serif text-2xl md:text-3xl mb-4">
-            Résérvation des chambres ou des tentes
+            Réservation des chambres ou des tentes
           </h2>
           
           <p className="text-muted-foreground mb-8 max-w-lg mx-auto">
