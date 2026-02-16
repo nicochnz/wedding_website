@@ -37,7 +37,7 @@ const RSVPForm = () => {
   const clientAction = async (formData: FormData) => {
     setIsSubmitting(true);
     
-    // Add non-input state to formData
+
     selectedDays.forEach(day => formData.append('jours', day));
     if (selectedMeal) formData.append('repas', selectedMeal);
 
@@ -48,7 +48,6 @@ const RSVPForm = () => {
         toast.success('Merci pour votre réponse !', {
           description: 'Votre réponse a été envoyée par email.',
         });
-        // Reset form (reload or clear state)
         setSelectedDays([]);
         setSelectedMeal("");
         (document.getElementById("rsvp-form") as HTMLFormElement)?.reset();
@@ -74,7 +73,6 @@ const RSVPForm = () => {
 
         <div className="max-w-2xl mx-auto">
           <form id="rsvp-form" action={clientAction} className="card-wedding space-y-8">
-            {/* Personal Info */}
             <div className="grid md:grid-cols-2 gap-6">
               <div className="space-y-2">
                 <Label htmlFor="prenom" className="text-sm font-medium">
@@ -85,7 +83,7 @@ const RSVPForm = () => {
                   name="prenom"
                   placeholder="Votre prénom"
                   required
-                  className="bg-white/50 border-primary/20 focus:ring-primary focus:border-primary" // Plus doux
+                  className="bg-white/50 border-primary/20 focus:ring-primary focus:border-primary"
                 />
               </div>
               <div className="space-y-2">
@@ -116,7 +114,6 @@ const RSVPForm = () => {
               />
             </div>
 
-            {/* Days Selection */}
             <div className="space-y-4">
               <Label className="text-sm font-medium">
                 Jours de présence
@@ -128,7 +125,7 @@ const RSVPForm = () => {
                     className={`flex items-center gap-4 p-4 rounded-lg border cursor-pointer transition-all ${
                       selectedDays.includes(day.id)
                         ? 'border-primary bg-primary/10'
-                        : 'border-primary/10 hover:border-primary/30 bg-white/50'
+                        : 'border-primary/10 hover:border-primary/30 bg-white/40'
                     }`}
                   >
                     <Checkbox
