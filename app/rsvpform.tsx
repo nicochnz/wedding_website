@@ -20,7 +20,7 @@ const days = [
 const mealOptions = [
   { value: 'viande', label: 'Viande', description: 'Magret de canard & côte de boeuf' },
   { value: 'poisson', label: 'Poisson', description: 'Bar - Daurade - Thon - Saumon' },
-  { value: 'vegetarien', label: 'Végétarien', description: 'Tian de légumes' },
+  { value: 'vegetarien', label: 'Végétarien', description: 'Tian de légumes ' },
 ];
 
 const RSVPForm = () => {
