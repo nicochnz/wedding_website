@@ -11,7 +11,7 @@ const Hero = () => {
           src="/cam_nico.jpg"
           alt="Mariage Camille & Nicolas"
           fill
-          className="object-cover object-[10%_center] md:object-[center_25%]" // Mobile: Décalé droite (pour voir visages à gauche) | Desktop: Décalé haut
+          className="object-cover object-[10%_center] md:object-[center_25%]" 
           priority
           quality={90}
         />
@@ -34,7 +34,7 @@ const Hero = () => {
           <span className="w-16 h-px bg-gold-light shadow-sm" />
         </div>
         <p className="text-lg md:text-xl font-light tracking-wide opacity-0 animate-fade-in drop-shadow-md" style={{ animationDelay: '0.8s' }}>
-          20 — 23 Août 2026
+          20 - 23 Août 2026
         </p>
       </div>
 
