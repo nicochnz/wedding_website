@@ -1,9 +1,13 @@
 import { notFound } from "next/navigation";
-import { getGuestBySlug } from "@/data/guests";
+import { getGuestBySlug, guests } from "@/data/guests";
 import InviteClient from "./client";
 import type { Metadata } from "next";
 
 type Props = { params: Promise<{ slug: string }> };
+
+export function generateStaticParams() {
+  return guests.map((g) => ({ slug: g.slug }));
+}
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
