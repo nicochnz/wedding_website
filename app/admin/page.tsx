@@ -44,7 +44,6 @@ export default async function AdminPage() {
               <img src={dataUrl} alt={`QR ${guest.name}`} className="w-36 h-36" />
               <p className="font-medium text-sm text-foreground leading-tight">{guest.name}</p>
               <p className="text-xs text-primary font-medium">{guest.house}</p>
-              <p className="text-xs text-muted-foreground break-all">{url}</p>
             </div>
           ))}
         </div>
