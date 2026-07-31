@@ -26,8 +26,8 @@ const DAYS = [
     label: "Jeu. 20",
     date: "Jeudi 20 Août",
     events: [
-      { time: "14h00", title: "Arrivée & installation", desc: "Accueil dans votre hébergement" },
-      { time: "19h00", title: "Apéritif de bienvenue", desc: "Retrouvez-vous autour d'un verre" },
+      { time: "16h00", title: "Arrivée & installation", desc: "Accueil dans votre hébergement" },
+      { time: "19h00", title: "Apéro", desc: "On se retrouve autour d'un verre" },
       { time: "21h00", title: "Dîner", desc: "Premier repas tous ensemble" },
     ],
   },
@@ -35,18 +35,19 @@ const DAYS = [
     label: "Ven. 21",
     date: "Vendredi 21 Août",
     events: [
-      { time: "10h00", title: "Brunch", desc: "" },
-      { time: "14h00", title: "Activités & détente", desc: "À compléter" },
-      { time: "20h00", title: "Soirée", desc: "À compléter" },
+      { time: "9h00", title: "Départ du domaine", desc: "RDV Mairie à 10h30" },
+      { time: "11h00", title: "Mariage", desc: "Mairie de Mérignac" },
+      { time: "13h30", title: "Vin d'honneur", desc: "On profite de la journée + Photos" },
+      { time: "18h00", title: "Soirée", desc: "Apéro +Repas" },
     ],
   },
   {
     label: "Sam. 22",
-    date: "Samedi 22 Août - Jour J",
+    date: "Samedi 22 Août",
     events: [
-      { time: "11h00", title: "Cérémonie civile", desc: "À compléter" },
-      { time: "13h00", title: "Vin d'honneur", desc: "" },
-      { time: "19h00", title: "Cérémonie & Dîner", desc: "La grande soirée !" },
+      { time: "11h00", title: "Brunch"},
+      { time: "13h00", title: "Activités diverses", desc: "Volley, Jaccuzi, Piscine..." },
+      { time: "19h00", title: "Burger du chef", desc: "FoodTruck" },
     ],
   },
   {
