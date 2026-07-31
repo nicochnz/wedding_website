@@ -38,7 +38,7 @@ const DAYS = [
       { time: "9h00", title: "Départ du domaine", desc: "RDV Mairie à 10h30" },
       { time: "11h00", title: "Mariage", desc: "Mairie de Mérignac" },
       { time: "13h30", title: "Vin d'honneur", desc: "On profite de la journée + Photos" },
-      { time: "18h00", title: "Soirée", desc: "Apéro +Repas" },
+      { time: "18h00", title: "Soirée", desc: "Apéro + Repas" },
     ],
   },
   {
@@ -47,7 +47,8 @@ const DAYS = [
     events: [
       { time: "11h00", title: "Brunch"},
       { time: "13h00", title: "Activités diverses", desc: "Volley, Jaccuzi, Piscine..." },
-      { time: "19h00", title: "Burger du chef", desc: "FoodTruck" },
+      { time: "19h00", title: "Apéro", desc: "Comme d'hab" },
+      { time: "20h30", title: "Burger du chef", desc: "FoodTruck" },
     ],
   },
   {
