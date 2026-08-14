@@ -41,7 +41,7 @@ export default async function AdminPage() {
               className="bg-white/70 border border-primary/20 rounded-xl p-4 flex flex-col items-center gap-2 text-center"
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={dataUrl} alt={`QR ${guest.name}`} className="w-36 h-36" />
+              <img src={dataUrl} alt={`QR ${guest.name}`} className="w-18 h-18" />
               <p className="font-medium text-sm text-foreground leading-tight">{guest.name}</p>
               <p className="text-xs text-primary font-medium">{guest.house}</p>
             </div>

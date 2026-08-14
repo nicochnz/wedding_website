@@ -18,16 +18,16 @@ export const guests: Guest[] = [
 
   // --- Maisonnette du Lac · N°2 ---
   { slug: "frederic", name: "Frédéric", house: "Maisonnette du Lac", houseNumber: 2, mapPosition: { x: 55, y: 20 }, note: "Banquette lit" },
-  { slug: "patou", name: "Patou", house: "Maisonnette du Lac", houseNumber: 2, mapPosition: { x: 55, y: 20 }, note: "Chambre" },
-  { slug: "jackie", name: "Jackie", house: "Maisonnette du Lac", houseNumber: 2, mapPosition: { x: 55, y: 20 }, note: "Chambre" },
+  { slug: "patou", name: "Patou", house: "Gîte nature & détente", houseNumber: 3, mapPosition: { x: 75, y: 40 }, note: "Chambre 1" },
+  { slug: "jackie", name: "Jackie", house: "Gîte nature & détente", houseNumber: 3, mapPosition: { x: 75, y: 40 }, note: "Chambre 1" },
 
   // --- Gîte nature & détente · N°3 ---
   { slug: "maelle", name: "Maëlle", house: "Gîte nature & détente", houseNumber: 3, mapPosition: { x: 75, y: 40 }, note: "Chambre 3" },
   { slug: "thomas-tacquin", name: "Thomas Tacquin", house: "Gîte nature & détente", houseNumber: 3, mapPosition: { x: 75, y: 40 }, note: "Chambre 3" },
   { slug: "maude", name: "Maude", house: "Gîte nature & détente", houseNumber: 3, mapPosition: { x: 75, y: 40 }, note: "Chambre 2" },
   { slug: "alex", name: "Alex", house: "Gîte nature & détente", houseNumber: 3, mapPosition: { x: 75, y: 40 }, note: "Chambre 2" },
-  { slug: "armand", name: "Armand", house: "Gîte nature & détente", houseNumber: 3, mapPosition: { x: 75, y: 40 }, note: "Chambre 1" },
-  { slug: "melissa", name: "Mélissa", house: "Gîte nature & détente", houseNumber: 3, mapPosition: { x: 75, y: 40 }, note: "Chambre 1" },
+  { slug: "armand", name: "Armand", house: "Maisonnette du Lac", houseNumber: 2, mapPosition: { x: 55, y: 20 }, note: "Chambre" },
+  { slug: "melissa", name: "Mélissa", house: "Maisonnette du Lac", houseNumber: 2, mapPosition: { x: 55, y: 20 }, note: "Chambre" },
 
   // --- Gîte de groupe · N°4 ---
   { slug: "jean-marc", name: "Jean-Marc", house: "Gîte de groupe", houseNumber: 4, mapPosition: { x: 30, y: 65 }, note: "Chambre 2" },
